@@ -3,11 +3,11 @@ import axios from "axios";
 
 function Feed() {
   const [posts, setPosts] = useState([]);
-
+  
 useEffect(() => {
   axios
     .get("http://localhost:3000/get-post")
-    .then((response) => setPosts(response.data.post || []))
+    .then((response) => setPosts((response.data.post || []).reverse()))
     .catch((error) => console.error(error));
 }, []);
 
